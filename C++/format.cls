@@ -11,6 +11,11 @@ body={390pt,530pt},marginparsep=10pt,marginpar=50pt]{geometry}
 \usepackage{pifont}
 \usepackage{underscore}
 \usepackage{amsmath}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{keyval}
+\usepackage{caption}
+
 
 \DefineFNsymbols*{chinese}{{\ding{172}}{\ding{173}}{\ding{174}}{\ding{175}}%
 {\ding{176}}{\ding{177}}{\ding{178}}{\ding{179}}{\ding{180}}{\ding{181}}}
@@ -82,21 +87,36 @@ topsep=3pt plus 2pt minus 2pt,%
 parsep=0pt plus 2pt minus 2pt]}
 \newcommand\myendnum{\end{enumerate}}
 
-\DefineVerbatimEnvironment%
-  {Code}{Verbatim}
-  {fontsize=\small,baselinestretch=0.9,xleftmargin=3mm}
+% \DefineVerbatimEnvironment%
+%   {Code}{Verbatim}
+%   {fontsize=\small,baselinestretch=0.9,xleftmargin=3mm}
 
 \raggedbottom
 %\setlength{\parskip}{1ex plus .5ex minus .5ex}
 
+
+\definecolor{lgrey}{rgb}{0.9,0.9,0.9}
+
 \input{verbatim.cls}
+
+% ======== Define \begin{Codex}[label=xxx.h]  \end{Codex} =========
+
 \DefineVerbatimEnvironment%
   {Codex}{Verbatim}
   {fontsize=\small,baselinestretch=0.9,xleftmargin=3mm,%
   frame=lines,labelposition=all,framesep=5pt}
 
-\DefineVerbatimEnvironment%
-  {Code}{Verbatim}
-  {fontsize=\small,baselinestretch=0.9,xleftmargin=3mm}
+% ======== Define \begin{Code} \end{Code} =========================
+
+\newminted[mcode]{cpp}
+{
+  linenos,
+  bgcolor=lgrey,
+  fontsize=\small,
+  baselinestretch=0.9,
+  xleftmargin=3mm,
+}
+
+\newenvironment{Code}{\VerbatimEnvironment\begin{mcode}}{\end{mcode}}
 
 \makeindex
