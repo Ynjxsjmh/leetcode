@@ -373,6 +373,13 @@ private:
 
 
 \subsubsection{动规}
+
+中间的循环换成 dp[i][j] 也可以过，而且我觉得写成 dp[i][j] 的形式效率会
+高一些。因为一般数组都是行优先的，所以从空间局部性来讲，dp[i][j] 会快
+一点。
+
+友情提示：下面的代码有些小缺陷。
+
 \begin{Code}
 // LeetCode, Longest Palindromic Substring
 // 动规，时间复杂度O(n^2)，空间复杂度O(n^2)
